@@ -1,6 +1,6 @@
 package counter
 
-import "github.com/mole828/collections/pkg/defaultdict"
+import "github.com/mole828/collections/defaultdict"
 
 type Counter[K comparable] struct {
 	defaultdict.DefaultDict[K, int]
