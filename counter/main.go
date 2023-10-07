@@ -18,3 +18,11 @@ func NewCounter[K comparable]() Counter[K] {
 		dict,
 	}
 }
+
+func CountAll[K comparable](iter []K) Counter[K] {
+	counter := NewCounter[K]()
+	for _, value := range iter {
+		counter.Inc(value, 1)
+	}
+	return counter
+}
