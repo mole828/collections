@@ -12,7 +12,7 @@ func (c Counter[K]) Inc(key K, value int) {
 	c.Set(key, c.Get(key)+value)
 }
 
-func NewCounter[K comparable]() Counter[K] {
+func New[K comparable]() Counter[K] {
 	dict := defaultdict.New[K, int](func() int {
 		return 0
 	})
@@ -22,7 +22,7 @@ func NewCounter[K comparable]() Counter[K] {
 }
 
 func CountAll[K comparable](iter []K) Counter[K] {
-	counter := NewCounter[K]()
+	counter := New[K]()
 	for _, value := range iter {
 		counter.Inc(value, 1)
 	}
