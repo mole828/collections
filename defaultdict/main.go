@@ -22,7 +22,7 @@ func (dict DefaultDict[K, V]) Data() map[K]V {
 	return dict.data
 }
 
-func NewDefaultDict[K comparable, V any](f func() V) DefaultDict[K, V] {
+func New[K comparable, V any](f func() V) DefaultDict[K, V] {
 	return DefaultDict[K, V]{
 		data:         map[K]V{},
 		defaultValue: f,
