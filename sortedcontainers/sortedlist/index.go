@@ -81,3 +81,30 @@ func (list *SortedList[T]) Add(value T) {
 
 	list.len += 1
 }
+
+func (list *SortedList[T]) Remove(is func(T) bool) {
+	a := list.head
+	b := a.next
+
+	for b != nil {
+		if is(b.value) {
+			c := b.next
+
+			b.prev = nil
+			b.next = nil
+
+			a.next = c
+			if c != nil {
+				c.prev = nil
+				if a != list.head {
+					c.prev = a
+				}
+			}
+
+			b = c
+		} else {
+			a = b
+			b = b.next
+		}
+	}
+}
